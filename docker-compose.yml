@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    image: node:16
+    restart: always
+    command: bash -c "npm install && npm run dev"
+    networks:
+      - main
+    environment:
+      # color prompt
+      PS1: "\\[\\e[1;34m\\]\\w \\[\\e[0;35m\\]\\$$\\[\\e[m\\] "
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    working_dir: /app
+  db:
+    image: mariadb:10.5
+    networks:
+      - main
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_USER: user
+      MYSQL_PASSWORD: db_pass
+      MYSQL_DATABASE: db_dev
+      MYSQL_TCP_PORT: 3306
+    ports:
+      - "3306:3306"
+    expose:
+      - 3306
+networks:
+  main:

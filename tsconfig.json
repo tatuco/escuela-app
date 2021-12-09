@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "es5",
+      "es6"
+    ],
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true
+  },
+  "exclude": [
+    ".vscode",
+    ".serverless",
+    ".git",
+    "node_modules"
+  ],
+  "baseUrl": ".",
+  "paths": {
+   "*": ["src/types/*", "src/hardware/**/*.js"],
+    "hardware": ["src/hardware/**/*.js"]
+  },
+  "typeRoots": ["src/types/global.d.ts", "src/hardware/**/*.js"],
+  "compileOnSave": true,
+  "buildOnSave": false
+}
