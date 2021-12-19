@@ -1,8 +1,9 @@
 import {EntityBase} from "../core/EntityBase";
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {User} from "./User";
 import {Grade} from "./Grade";
 import {Course} from "./Course";
+import {History} from "./History";
 
 @Entity()
 export class File extends EntityBase {
@@ -32,4 +33,7 @@ export class File extends EntityBase {
     @ManyToOne(type => Course, course => course.schedules)
     @JoinColumn({name: "courseId"})
     course: Course;
+
+    @OneToMany(type => History, history => history.file)
+    histories: History[];
 }

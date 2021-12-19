@@ -1,3 +1,5 @@
+import {checkJwt} from "./middlewares/checkJwt";
+
 require('dotenv').config();
 import "reflect-metadata";
 import * as express from "express";
@@ -9,8 +11,10 @@ import routes from "./routes";
 import {validateRequest} from "./middlewares/validateRequest";
 import {Parameters} from "./middlewares/Parameters";
 const compression = require('compression');
-import {createConnection} from "typeorm";
+import {createConnection, getRepository, Like} from "typeorm";
 import {config} from "./config/config";
+import {File} from "./entity/File";
+import {History} from "./entity/History";
 const obj = config();
 createConnection(obj)
     .then(async connection => {
@@ -27,6 +31,33 @@ createConnection(obj)
         app.use(Parameters)
         //Set all routes from routes folder
         app.use("/", routes);
+        app.use([ checkJwt ], async (req, res, next) => {
+            try {
+                if (req.url.split('/')[3]?.startsWith('images'))
+                    return next();
+                let nameFile = req.url.split('/')[3].split('?')[0];
+                const file = await File.findOne({
+                    where: {
+                        file: Like(`%${nameFile}`)
+                    }
+                })
+                if (!file)
+                    return res.send({
+                        message: 'Archivo no encontrado'
+                    }).status(404)
+                const repository = getRepository(History);
+                await repository.save({
+                   userId: res.locals.jwtPayload.userId,
+                   fileId: file.id
+                });
+            } catch (e) {
+                console.log(e)
+                return res.send({
+                    message: 'Error al intentar guardar historial de descarga.'
+                }).status(500)
+            }
+            next()
+        }, express.static('public'))
         app.use(errorHandler)
         app.use(function (req, res) {
             return res.status(404).send({

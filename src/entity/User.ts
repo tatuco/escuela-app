@@ -13,6 +13,7 @@ import {Note} from "./Note";
 import { Notice } from "./Notice";
 import {Grade} from "./Grade";
 import {Course} from "./Course";
+import {History} from "./History";
 
 export enum Roles {
     TEACHER = "PROFESOR",
@@ -114,4 +115,7 @@ export class User extends BaseEntity {
         inverseJoinColumn: {name: 'courseId', referencedColumnName: 'id'},
     })
     courses: Course[];
+
+    @OneToMany(type => History, history => history.user)
+    histories: History[];
 }
