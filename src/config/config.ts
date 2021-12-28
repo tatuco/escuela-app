@@ -10,7 +10,7 @@ const PROD = {
     "port": process.env.DB_PORT || 3306,
     "username": process.env.DB_USER,
     "password": process.env.DB_PASS,
-    "synchronize": false,
+    "synchronize": true,
     "logging": false,
     "entities": [
         "build/entity/**/*.js"
