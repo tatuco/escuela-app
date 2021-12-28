@@ -1,2 +1,1 @@
-worker: npm run prod
-
+web: node ./build/index.js
