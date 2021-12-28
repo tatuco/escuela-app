@@ -25,6 +25,12 @@ const PROD = {
         "entitiesDir": "build/entity",
         "migrationsDir": "build/migration",
         "subscribersDir": "build/subscriber"
+    },
+    "ssl": true,
+    "extra": {
+        "ssl": {
+            "rejectUnauthorized": false
+        }
     }
 }
 

@@ -1,3 +1,8 @@
 /node_modules
 /public/storage
 .idea
+waipio.ca.cert
+waipio.ca.cert.csr
+waipio.ca.cert.p12
+waipio.ca.key
+privkey.pem
