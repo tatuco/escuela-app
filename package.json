@@ -58,7 +58,7 @@
     "lint-s": "standard '*/**/*.{js,ts,tsx}' --fix",
     "start": "set NODE_ENV=production node ./build/index.js",
     "dev": "set NODE_ENV=dev && set debug=* && ts-node-dev --respawn --poll src/index.ts",
-    "prod": "npm install typescript --global --save && npm install --global tsc --save && set NODE_ENV=production && tsc && node ./build/index.js",
+    "prod": "npm install typescript --global --save && set NODE_ENV=production && tsc && node ./build/index.js",
     "server": "set NODE_ENV=production && tsc && node ./build/index.js && cp -r ./src/hardware ./src/logs ./build",
     "test": "set NODE_ENV=test && tsc && node ./build/index.js",
     "seed": "ts-node ./node_modules/typeorm/cli.js migration:run",
