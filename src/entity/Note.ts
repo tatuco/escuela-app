@@ -10,7 +10,7 @@ export class Note extends EntityBase {
     @Column()
     title: string;
 
-    @Column({ nullable: true, type: "longtext" })
+    @Column({ nullable: true, type: "text" })
     description: string
 
     @Column({ nullable: true })

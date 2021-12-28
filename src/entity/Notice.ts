@@ -7,7 +7,7 @@ export class Notice extends EntityBase {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ type: "longtext" })
+    @Column({ type: "text" })
     description: string
 
     @Column({nullable: true})
