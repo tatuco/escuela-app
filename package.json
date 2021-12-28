@@ -44,6 +44,7 @@
     "require-directory": "^2.1.1",
     "socket.io": "^2.3.0",
     "ts-node-dev": "^1.0.0-pre.44",
+    "tsc": "^2.0.3",
     "turf": "^3.0.14",
     "typedi": "^0.8.0",
     "typeorm": "^0.2.22",
