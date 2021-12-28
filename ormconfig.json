@@ -1,10 +1,10 @@
 {
-   "type": "mysql",
-   "database": "db_dev",
-   "host": "db",
-   "port": 3306,
-   "username": "user",
-   "password": "db_pass",
+   "type": "postgres",
+   "database": "d9i9rfp51inmrs",
+   "host": "ec2-18-214-238-28.compute-1.amazonaws.com",
+   "port": 5432,
+   "username": "qqtucbgmrazebt",
+   "password": "6544a41edbe77524786b2911789f1cbc3ec4c9045b96673be66ff62451478f43",
    "synchronize": true,
    "logging": true,
    "entities": [

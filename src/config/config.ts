@@ -4,7 +4,7 @@ export default {
 };
 
 const PROD = {
-    "type": "mysql",
+    "type": process.env.DB_DRIVER,
     "database": process.env.DB_NAME,
     "host": process.env.DB_HOST,
     "port": process.env.DB_PORT || 3306,
@@ -29,7 +29,7 @@ const PROD = {
 }
 
 const DEV = {
-    "type": "mysql",
+    "type": process.env.DB_DRIVER,
     "database": process.env.DB_NAME || "service",
     "host": process.env.DB_HOST || "localhost",
     "port": process.env.DB_PORT || 3306,
