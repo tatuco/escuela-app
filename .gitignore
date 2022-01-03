@@ -1,5 +1,4 @@
 /node_modules
-/public/storage
 .idea
 waipio.ca.cert
 waipio.ca.cert.csr
