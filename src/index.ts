@@ -31,7 +31,7 @@ createConnection(obj)
         app.use(Parameters)
         //Set all routes from routes folder
         app.use("/", routes);
-        app.use([ checkJwt ], async (req, res, next) => {
+        app.use(/*[ checkJwt ],*/ async (req, res, next) => {
             try {
                 if (req.url.split('/')[3]?.startsWith('images'))
                     return next();
@@ -45,11 +45,11 @@ createConnection(obj)
                     return res.send({
                         message: 'Archivo no encontrado'
                     }).status(404)
-                const repository = getRepository(History);
+               /* const repository = getRepository(History);
                 await repository.save({
                    userId: res.locals.jwtPayload.userId,
                    fileId: file.id
-                });
+                });*/
             } catch (e) {
                 console.log(e)
                 return res.send({
