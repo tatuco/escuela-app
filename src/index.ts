@@ -31,7 +31,7 @@ createConnection(obj)
         app.use(Parameters)
         //Set all routes from routes folder
         app.use("/", routes);
-        app.use("/",/*[ checkJwt ],*/ async (req, res, next) => {
+        app.use([ checkJwt ], async (req, res, next) => {
             try {
                 if (req.url.split('/')[3]?.startsWith('images'))
                     return next();
