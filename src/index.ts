@@ -31,7 +31,8 @@ createConnection(obj)
         app.use(Parameters)
         //Set all routes from routes folder
         app.use("/", routes);
-        app.use([ checkJwt ], async (req, res, next) => {
+        app.use(express.static('public'));
+      /*  app.use([ checkJwt ], async (req, res, next) => {
             try {
                 if (req.url.split('/')[3]?.startsWith('images'))
                     return next();
@@ -50,14 +51,14 @@ createConnection(obj)
                    userId: res.locals.jwtPayload.userId,
                    fileId: file.id
                 });*/
-            } catch (e) {
+         /*   } catch (e) {
                 console.log(e)
                 return res.send({
                     message: 'Error al intentar guardar historial de descarga.'
                 }).status(500)
             }
             next()
-        }, express.static('public'))
+        }, express.static('public'))*/
         app.use(errorHandler)
         app.use(function (req, res) {
             return res.status(404).send({
