@@ -5,8 +5,6 @@ import {Roles, User} from "../entity/User";
 import {SessionControl} from "../core/SessionControl";
 
 export const checkJwt = async (req: Request, res: Response, next: NextFunction) => {
-  next();
-  return;
   let token = req.headers['authorization'] ?? 'Bearer ' + req.query.token;
   if (!token) {
     return res.status(401).send({
