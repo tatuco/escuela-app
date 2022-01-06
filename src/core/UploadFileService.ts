@@ -16,7 +16,7 @@ export class UploadFileService {
     };
 
     static uploadFile = async (file, folder = '') => {
-        let subDir = `public/storage/${folder !== '' ? folder + '/' : folder}`
+        let subDir = `storage/${folder !== '' ? folder + '/' : folder}`
         const userUploadedFeedMessagesLocation = require("path").join(__dirname, `${process.env.DIR_STORAGE}${subDir}`);
         try {
             if (!fs.existsSync(userUploadedFeedMessagesLocation)) {
