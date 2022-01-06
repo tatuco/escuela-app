@@ -48,7 +48,7 @@ export class FileController {
             if (!file.status)
                 throw {message: "Error En la subida Documento", status: 500};
 
-            valide.object.file = `${process.env.APP_URL}/public/${file.subDir}${file.file}`
+            valide.object.file = `${process.env.APP_URL}/${file.subDir}${file.file}`
             valide.object.userId = res.locals.jwtPayload.userId
             const repository = getRepository(File);
             const data = await repository.save(valide.object);
