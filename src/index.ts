@@ -31,8 +31,8 @@ createConnection(obj)
         app.use(Parameters)
         //Set all routes from routes folder
         app.use("/", routes);
-        app.use(express.static(__dirname + '/public'));
-      /*  app.use([ checkJwt ], async (req, res, next) => {
+        //app.use(express.static('public'));
+        app.use([ checkJwt ], async (req, res, next) => {
             try {
                 if (req.url.split('/')[3]?.startsWith('images'))
                     return next();
@@ -46,19 +46,19 @@ createConnection(obj)
                     return res.send({
                         message: 'Archivo no encontrado'
                     }).status(404)
-               /* const repository = getRepository(History);
+                const repository = getRepository(History);
                 await repository.save({
                    userId: res.locals.jwtPayload.userId,
                    fileId: file.id
-                });*/
-         /*   } catch (e) {
+                });
+            } catch (e) {
                 console.log(e)
                 return res.send({
                     message: 'Error al intentar guardar historial de descarga.'
                 }).status(500)
             }
             next()
-        }, express.static('public'))*/
+        }, express.static('public'))
         app.use(errorHandler)
         app.use(function (req, res) {
             return res.status(404).send({
@@ -70,7 +70,6 @@ createConnection(obj)
         // });
         server.listen(process.env.PORT,(err, res) => {
             if (err) throw err;
-           // console.log(`Server socket.io on port \x1b[32m%s\x1b[0m`, 5000);
             console.log(`Server ${process.env.NODE_ENV} started on port \x1b[32m%s\x1b[0m`, process.env.PORT);
         });
     })
