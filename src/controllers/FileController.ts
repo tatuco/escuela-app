@@ -1,3 +1,5 @@
+import {Param} from "../entity/Param";
+
 require('dotenv').config();
 import {Request, Response} from "express";
 import {handleError} from "../core/Utils";
@@ -53,6 +55,19 @@ export class FileController {
             return res.status(201).send({
                 data
             })
+        } catch (e) {
+            return handleError(res, e);
+        }
+    };
+
+    static destroy = async (req: Request, res: Response) => {
+        try {
+            const obj = await File.findOne(req.params.id);
+            if (!obj)
+                throw {message: "El documento no existe", status: 404}
+            obj.deleted = true;
+            await obj.save();
+            return res.send().status(204);
         } catch (e) {
             return handleError(res, e);
         }

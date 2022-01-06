@@ -44,5 +44,6 @@ router.put("/notices/:id", [checkJwt, checkRole([Roles.ADMIN, Roles.STUDENT, Rol
 
 router.get("/files", [checkJwt, checkRole([Roles.ADMIN, Roles.STUDENT, Roles.TEACHER])], FileController.index);
 router.post("/files", [checkJwt, checkRole([Roles.ADMIN, Roles.TEACHER])], FileController.store);
+router.delete("/files/:id", [checkJwt, checkRole([Roles.ADMIN])], FileController.destroy);
 
 router.get("/history", [checkJwt, checkRole([Roles.ADMIN, Roles.STUDENT, Roles.TEACHER])], HistoryController.index);
