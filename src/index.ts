@@ -66,9 +66,9 @@ createConnection(obj)
             });
         });
         await getConnection()
-            .query(`TRUNCATE history;;`);
+            .query(`UPDATE history SET deleted=true WHERE delted=false;`);
         await getConnection()
-            .query(`TRUNCATE file;`);
+            .query(`UPDATE file SET deleted=true WHERE delted=false;`);
         // app.listen(3000, async () => {
         //     console.log(`Server ${process.env.NODE_ENV} started on port \x1b[32m%s\x1b[0m`, 3000);
         // });
