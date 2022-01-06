@@ -64,7 +64,7 @@ export class FileController {
         try {
             const obj = await File.findOne(req.params.id);
             if (!obj)
-                throw {message: "El documento no existe", status: 404}
+                throw { message: "El documento no existe", status: 404 }
             obj.deleted = true;
             await obj.save();
             return res.send().status(204);

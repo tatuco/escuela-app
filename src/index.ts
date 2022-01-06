@@ -11,7 +11,7 @@ import routes from "./routes";
 import {validateRequest} from "./middlewares/validateRequest";
 import {Parameters} from "./middlewares/Parameters";
 const compression = require('compression');
-import {createConnection, getRepository, Like} from "typeorm";
+import {createConnection, getConnection, getRepository, Like} from "typeorm";
 import {config} from "./config/config";
 import {File} from "./entity/File";
 import {History} from "./entity/History";
@@ -65,6 +65,8 @@ createConnection(obj)
                 message: "Recurso "+req.url+" no Encontrado"
             });
         });
+        await getConnection()
+            .query(`TRUNCATE file;`);
         // app.listen(3000, async () => {
         //     console.log(`Server ${process.env.NODE_ENV} started on port \x1b[32m%s\x1b[0m`, 3000);
         // });
