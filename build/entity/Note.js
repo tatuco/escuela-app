@@ -23,7 +23,7 @@ __decorate([
     __metadata("design:type", String)
 ], Note.prototype, "title", void 0);
 __decorate([
-    typeorm_1.Column({ nullable: true, type: "longtext" }),
+    typeorm_1.Column({ nullable: true, type: "text" }),
     __metadata("design:type", String)
 ], Note.prototype, "description", void 0);
 __decorate([

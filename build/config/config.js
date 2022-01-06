@@ -11,7 +11,7 @@ const PROD = {
     "port": process.env.DB_PORT || 3306,
     "username": process.env.DB_USER,
     "password": process.env.DB_PASS,
-    "synchronize": false,
+    "synchronize": true,
     "logging": false,
     "entities": [
         "build/entity/**/*.js"
@@ -26,6 +26,12 @@ const PROD = {
         "entitiesDir": "build/entity",
         "migrationsDir": "build/migration",
         "subscribersDir": "build/subscriber"
+    },
+    "ssl": true,
+    "extra": {
+        "ssl": {
+            "rejectUnauthorized": false
+        }
     }
 };
 const DEV = {

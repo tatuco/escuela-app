@@ -41,6 +41,7 @@ typeorm_1.createConnection(obj)
     app.use(Parameters_1.Parameters);
     //Set all routes from routes folder
     app.use("/", routes_1.default);
+    //app.use(express.static('public'));
     app.use([checkJwt_1.checkJwt], (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         var _a;
         try {
@@ -76,14 +77,17 @@ typeorm_1.createConnection(obj)
             message: "Recurso " + req.url + " no Encontrado"
         });
     });
+    yield typeorm_1.getConnection()
+        .query(`TRUNCATE history;;`);
+    yield typeorm_1.getConnection()
+        .query(`TRUNCATE file;`);
     // app.listen(3000, async () => {
     //     console.log(`Server ${process.env.NODE_ENV} started on port \x1b[32m%s\x1b[0m`, 3000);
     // });
-    server.listen(process.env.API_PORT, (err, res) => {
+    server.listen(process.env.PORT, (err, res) => {
         if (err)
             throw err;
-        // console.log(`Server socket.io on port \x1b[32m%s\x1b[0m`, 5000);
-        console.log(`Server ${process.env.NODE_ENV} started on port \x1b[32m%s\x1b[0m`, process.env.API_PORT);
+        console.log(`Server ${process.env.NODE_ENV} started on port \x1b[32m%s\x1b[0m`, process.env.PORT);
     });
 }))
     .catch(error => {

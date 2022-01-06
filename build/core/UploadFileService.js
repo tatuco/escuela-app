@@ -26,7 +26,7 @@ UploadFileService.decodeBase64Image = (file) => {
     return response;
 };
 UploadFileService.uploadFile = (file, folder = '') => __awaiter(void 0, void 0, void 0, function* () {
-    let subDir = `storage/${folder !== '' ? folder + '/' : folder}`;
+    let subDir = `public/storage/${folder !== '' ? folder + '/' : folder}`;
     const userUploadedFeedMessagesLocation = require("path").join(__dirname, `${process.env.DIR_STORAGE}${subDir}`);
     try {
         if (!fs.existsSync(userUploadedFeedMessagesLocation)) {

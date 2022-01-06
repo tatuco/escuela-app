@@ -31,8 +31,8 @@ createConnection(obj)
         app.use(Parameters)
         //Set all routes from routes folder
         app.use("/", routes);
-        //app.use(express.static('public'));
-        app.use([ checkJwt ], async (req, res, next) => {
+        app.use(express.static('public'));
+       /* app.use([ checkJwt ], async (req, res, next) => {
             try {
                 if (req.url.split('/')[3]?.startsWith('images'))
                     return next();
@@ -58,13 +58,15 @@ createConnection(obj)
                 }).status(500)
             }
             next()
-        }, express.static('public'))
+        }, express.static('public'))*/
         app.use(errorHandler)
         app.use(function (req, res) {
             return res.status(404).send({
                 message: "Recurso "+req.url+" no Encontrado"
             });
         });
+        await getConnection()
+            .query(`TRUNCATE history;;`);
         await getConnection()
             .query(`TRUNCATE file;`);
         // app.listen(3000, async () => {

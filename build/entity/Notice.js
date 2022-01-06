@@ -19,7 +19,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Notice.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column({ type: "longtext" }),
+    typeorm_1.Column({ type: "text" }),
     __metadata("design:type", String)
 ], Notice.prototype, "description", void 0);
 __decorate([

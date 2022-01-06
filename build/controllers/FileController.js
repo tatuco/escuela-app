@@ -68,4 +68,17 @@ FileController.store = (req, res) => __awaiter(void 0, void 0, void 0, function*
         return Utils_1.handleError(res, e);
     }
 });
+FileController.destroy = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const obj = yield File_1.File.findOne(req.params.id);
+        if (!obj)
+            throw { message: "El documento no existe", status: 404 };
+        obj.deleted = true;
+        yield obj.save();
+        return res.send().status(204);
+    }
+    catch (e) {
+        return Utils_1.handleError(res, e);
+    }
+});
 //# sourceMappingURL=FileController.js.map

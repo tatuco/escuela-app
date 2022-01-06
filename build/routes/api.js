@@ -36,5 +36,6 @@ router.post("/notices", [checkJwt_1.checkJwt, checkRole_1.checkRole([User_1.Role
 router.put("/notices/:id", [checkJwt_1.checkJwt, checkRole_1.checkRole([User_1.Roles.ADMIN, User_1.Roles.STUDENT, User_1.Roles.TEACHER])], NoticeController_1.NoticeController.update);
 router.get("/files", [checkJwt_1.checkJwt, checkRole_1.checkRole([User_1.Roles.ADMIN, User_1.Roles.STUDENT, User_1.Roles.TEACHER])], FileController_1.FileController.index);
 router.post("/files", [checkJwt_1.checkJwt, checkRole_1.checkRole([User_1.Roles.ADMIN, User_1.Roles.TEACHER])], FileController_1.FileController.store);
+router.delete("/files/:id", [checkJwt_1.checkJwt, checkRole_1.checkRole([User_1.Roles.ADMIN])], FileController_1.FileController.destroy);
 router.get("/history", [checkJwt_1.checkJwt, checkRole_1.checkRole([User_1.Roles.ADMIN, User_1.Roles.STUDENT, User_1.Roles.TEACHER])], HistoryController_1.HistoryController.index);
 //# sourceMappingURL=api.js.map
