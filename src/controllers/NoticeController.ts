@@ -5,6 +5,7 @@ import {Validator} from "../core/Validator";
 import {UploadFileService} from "../core/UploadFileService";
 import {getRepository} from "typeorm";
 import {Note} from "../entity/Note";
+import {File} from "../entity/File";
 
 export class NoticeController {
     static index = async (req: Request, res: Response) => {
@@ -67,6 +68,19 @@ export class NoticeController {
             valide.object.userId = res.locals.jwtPayload.userId
             await Note.update(req.params.id, valide.object);
             return res.status(201).send()
+        } catch (e) {
+            return handleError(res, e);
+        }
+    };
+
+    static destroy = async (req: Request, res: Response) => {
+        try {
+            const obj = await Notice.findOne(req.params.id);
+            if (!obj)
+                throw { message: "La noticia no existe", status: 404 }
+            obj.deleted = true;
+            await obj.save();
+            return res.send().status(204);
         } catch (e) {
             return handleError(res, e);
         }
