@@ -5,3 +5,6 @@ waipio.ca.cert.csr
 waipio.ca.cert.p12
 waipio.ca.key
 privkey.pem
+/public
+/build
+build
