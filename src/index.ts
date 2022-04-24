@@ -64,13 +64,6 @@ createConnection(obj)
                 message: "Recurso "+req.url+" no Encontrado"
             });
         });
-        await getConnection()
-            .query(`UPDATE history SET deleted=true WHERE deleted=false;`);
-        await getConnection()
-            .query(`UPDATE file SET deleted=true WHERE deleted=false;`);
-
-        await getConnection()
-            .query(`UPDATE notice SET deleted=true WHERE deleted=false;`);
         // app.listen(3000, async () => {
         //     console.log(`Server ${process.env.NODE_ENV} started on port \x1b[32m%s\x1b[0m`, 3000);
         // });
