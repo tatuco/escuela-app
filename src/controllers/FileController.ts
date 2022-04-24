@@ -16,7 +16,12 @@ export class FileController {
             if (req.query.hasOwnProperty('gradeId')) {
                 gradeId = req.query.gradeId
             }
-            let doWhere : any = { deleted: false, gradeId: gradeId }
+            let doWhere : any = { deleted: false }
+
+            if (gradeId) {
+                doWhere.gradeId = gradeId
+            }
+
             if (req.query.hasOwnProperty('courseId')) {
                 doWhere.courseId = req.query.courseId
             }
