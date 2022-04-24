@@ -12,7 +12,7 @@ export class HistoryController {
                 doWhere.userId = authUser.userId;
 
             const history = await History.find({
-                relations: ['user', 'file'],
+                relations: ['user', 'file', 'file.user'],
                 where: doWhere
             })
             return res.send({
