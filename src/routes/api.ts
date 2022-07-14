@@ -22,7 +22,7 @@ router.put("/params/:id", [checkJwt, checkRole([Roles.ADMIN])], ParamController.
 router.delete("/params/:id", [checkJwt, checkRole([Roles.ADMIN])], ParamController.destroy);
 
 router.get("/schedules", [checkJwt, checkRole([Roles.ADMIN,Roles.STUDENT])], ScheduleController.index);
-router.put("/schedules/:id", [checkJwt, checkRole([Roles.ADMIN,Roles.TEACHER])], ScheduleController.update);
+router.put("/schedules/:id", [checkJwt, checkRole([Roles.ADMIN,Roles.TEACHER, Roles.STUDENT])], ScheduleController.update);
 
 router.get("/menus", [checkJwt, checkRole([Roles.ADMIN,Roles.STUDENT, Roles.TEACHER])], MenuController.index);
 router.put("/menus/:id", [checkJwt, checkRole([Roles.ADMIN, Roles.TEACHER])], MenuController.update);
