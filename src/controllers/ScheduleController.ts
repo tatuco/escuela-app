@@ -6,6 +6,7 @@ import {Validator} from "../core/Validator";
 import {Menu} from "../entity/Menu";
 import {Course} from "../entity/Course";
 import {Grade} from "../entity/Grade";
+import {Roles} from "../entity/User";
 
 export class ScheduleController {
     static index = async (req: Request, res: Response) => {
@@ -19,6 +20,9 @@ export class ScheduleController {
                 gradeId: user.gradeId,
                 dayId
             };
+            if (!user.role.startsWith(Roles.STUDENT) && req.query.hasOwnProperty('gradeId'))
+                doWhere.gradeId = req.query.gradeId
+
             const schedules = await Schedule.find({
                 relations: ["course"],
                 where: doWhere,
