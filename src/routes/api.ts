@@ -21,7 +21,7 @@ router.post("/params", [checkJwt, checkRole([Roles.ADMIN])], ParamController.sto
 router.put("/params/:id", [checkJwt, checkRole([Roles.ADMIN])], ParamController.update);
 router.delete("/params/:id", [checkJwt, checkRole([Roles.ADMIN])], ParamController.destroy);
 
-router.get("/schedules", [checkJwt, checkRole([Roles.ADMIN,Roles.STUDENT])], ScheduleController.index);
+router.get("/schedules", [checkJwt, checkRole([Roles.ADMIN,Roles.STUDENT, Roles.TEACHER])], ScheduleController.index);
 router.put("/schedules/:id", [checkJwt, checkRole([Roles.ADMIN,Roles.TEACHER, Roles.STUDENT])], ScheduleController.update);
 
 router.get("/menus", [checkJwt, checkRole([Roles.ADMIN,Roles.STUDENT, Roles.TEACHER])], MenuController.index);
